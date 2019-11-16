@@ -1,10 +1,11 @@
 
-import java.io.*;
-import java.util.*;
+import model.calculus.OpAndCons;
+import model.calculus.Sym;
+import model.calculus.Tree;
 
 
-class Parser{
-  protected LookAhead1 reader;
+public class Parser2{
+  /*protected LookAhead1 reader;
 
   public Parser(LookAhead1 r){
     reader=r;
@@ -28,7 +29,7 @@ class Parser{
     }
   }
 
-  /*Grammar
+  Grammar
   term:=variable|(application)|(abstraction)|func
   variable:=[a-z]
   func_sym:=[A-Z]
@@ -42,7 +43,7 @@ class Parser{
   application:=term application'
   application'=term application'|epsilon
   application:=application term|term(abs or var)
-  */
+
 
   public Tree progNotTerm(int i) throws Exception{
     Tree tree=new Tree(lambdaterm(),(i==0)?new StrategyNOR():new StrategyAOR());
@@ -171,6 +172,6 @@ class Parser{
       return new Pair(condition,new Application(new Application(t0,t1),t2));
   }
 }
-}
+}*/
 
 }

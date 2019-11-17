@@ -50,7 +50,6 @@ class StrategyNOR extends Strategy{
       Abstraction a=(Abstraction)app.func();
       list.add(app);
       //here is the reduced redex, find a way
-    //  System.out.println("\n+ A reduire :: "+app.toString());
       return a.substitute(a.binding(),app.arg()).body();
     }
     return new Application(reduce(app.func(),list),reduce(app.arg(),list));

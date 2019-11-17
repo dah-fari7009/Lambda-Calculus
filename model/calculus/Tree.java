@@ -23,6 +23,7 @@ public class Tree{
     int a=0;
     System.out.println("Chosen reduction strategy:: "+evaluationStrat.toString()+"\n");
     System.out.println(redex);
+    redex.bond(false);
     while(!redex.isInBnf()){
       redex=evaluationStrat.reduce(redex,list);
       redex.bond(false);

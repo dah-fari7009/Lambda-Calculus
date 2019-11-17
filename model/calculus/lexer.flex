@@ -44,6 +44,8 @@ number=[0-9]+
 "*" {return new Token(Sym.MULT);}
 "^" {return new Token(Sym.EXP);}
 "<" {return new Token(Sym.LT);}
+
+
 "<=" {return new Token(Sym.LEQ);}
 ">" {return new Token(Sym.GT);}
 ">=" {return new Token(Sym.GEQ);}

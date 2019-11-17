@@ -84,7 +84,9 @@ class Variable extends LambdaTerm implements Cloneable{
   public LambdaTerm substitute(Variable target,LambdaTerm sub){
     LambdaTerm res=this;
     try{
-      if(this.contains(target))res=sub.clone();
+      if(this.contains(target)){
+        res=sub.clone();
+      }
     }
     catch(CloneNotSupportedException e){
       System.exit(1);
@@ -115,6 +117,7 @@ class Variable extends LambdaTerm implements Cloneable{
     if(a!=null && name==a.binding().name()){
       if(first && adress==null || !first && adress!=null) adress=a.binding().adress;
     }
+
   }
 
   public int size(){
@@ -194,6 +197,7 @@ public void rename(char t, char a){
       }
       this.rename(binding.name(),tar);
     }*/
+
     return new Abstraction(binding,body.substitute(target,sub));
 }
 
@@ -203,7 +207,7 @@ public void rename(char t, char a){
   }
 
   public String toString(){
-    return "(λ"+binding.toString()+ "" +body.toString()+")";
+    return "(λ"+binding.toString()+ "." +body.toString()+")";
   }
 
   public boolean isAlphaEquivalent(LambdaTerm l){

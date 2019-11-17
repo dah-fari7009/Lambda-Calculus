@@ -9,7 +9,7 @@ class Parser{
 
   public Tree progNotTerm(int i) throws Exception{
     Tree tree=new Tree(lambdaterm(),(i==0)?new StrategyNOR():new StrategyAOR());
-    System.out.println(tree.term());
+    //System.out.println(tree.term());
     if(!reader.isEmpty()) throw new Exception(reader.getLexer().getPosition()+"  Not valid end of file");
     return tree;
   }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 abstract class Strategy{
 
   public LambdaTerm reduce(LambdaTerm term,ArrayList<LambdaTerm> list){
+    System.out.println(term.getClass()+" To be reduced :"+term);
     if(term instanceof Variable) return reduceVar((Variable)term,list);
     if(term instanceof Abstraction) return reduceAbs((Abstraction)term,list);
     return reduceApp((Application)term,list);

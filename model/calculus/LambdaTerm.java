@@ -68,8 +68,9 @@ class Variable extends LambdaTerm implements Cloneable{
   }
 
   public  boolean contains(Variable target){
-    if(adress==null) return target.adress==null && contains(target.name());
-    return adress.equals(target.adress);
+    return target.name==this.name;
+    /*if(adress==null) return target.adress==null && contains(target.name());
+    return adress.equals(target.adress);*/
   }
 
   public void rename(char t, char a){
@@ -80,6 +81,7 @@ class Variable extends LambdaTerm implements Cloneable{
     if(adress!=null && adress.equals(adress2)) return 0;
     throw new Exception("Not a constant");
   }
+
 
   public LambdaTerm substitute(Variable target,LambdaTerm sub){
     LambdaTerm res=this;
@@ -184,20 +186,27 @@ class Abstraction extends LambdaTerm implements Cloneable{
 
 
 public void rename(char t, char a){
-    binding.rename(t,a);
+    if(this.binding.name==t) return;
     body.rename(t,a);
   }
 
   public Abstraction substitute(Variable target,LambdaTerm sub){
-   /*if(!binding.contains(target.name()) && sub.freeocc(binding.name())){
+      System.out.println("We will substitute : "+this+"   with  "+sub);
+      if(!this.body.freeocc(target.name)) {
+          System.out.println("Nothing to replace");
+          return this;
+     }
+    if(sub.freeocc(binding.name())){
       char tar='a';
-      while(body.contains(tar) || sub.freeocc(tar)){
+      while(sub.freeocc(tar) || body.contains(tar)){
         tar ++;
         //better this
+       // System.out.println(tar);
       }
-      this.rename(binding.name(),tar);
-    }*/
-
+     body.rename(binding.name(),tar);
+     binding.name=tar;
+    }
+    System.out.println("We might have replaced :: "+this);
     return new Abstraction(binding,body.substitute(target,sub));
 }
 
@@ -243,7 +252,7 @@ class Application extends LambdaTerm implements Cloneable{
 
 
   public boolean freeocc(char target){
-    return func.freeocc(target) && arg.freeocc(target);
+    return func.freeocc(target) || arg.freeocc(target);
   }
 
   public void rename(char t, char a){

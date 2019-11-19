@@ -8,8 +8,9 @@ public interface OpAndCons{
   final String snd="(λp.(p(λab.b)))";
   final String tru="(λab.a)";
   final String fals="(λab.b)";
-  final String and="(λxy.((xy)(λuv.v)))";
-  final String or="(λxy.((x(λuv.u))y))";
+  final String and="(λxy.((xy)x))";
+  final String or="(λxy.((xx)y))";
+  //final String or="(λxy.((x(λuv.u))y))";
   final String not="(λx.((x(λuv.v))(λab.a)))";
   final String iszero="(λm.((m(λx.false)) true))";
   final String leq="(λmn.("+iszero+"(m-n)))";
@@ -45,7 +46,7 @@ public interface OpAndCons{
   }
 
   static LambdaTerm fac() throws Exception{
-    String h="(λfn.if (n=0) then 1 else (n*(f(n-1))))";
+    String h="(λfn.if (n=0) then 1 else (f*(g(n-1))))";
     return new Application(parse(fix),parse(h));
   }
 
@@ -69,7 +70,7 @@ public interface OpAndCons{
 
   static LambdaTerm fib() throws Exception{
     //String fib="(λn.((((n(λfab.((fb)(a+b)))) true)0)1))";
-    String fib="(λfn.if (n<=2) then 1 else ((f(n-1)) + (f(n-2))))";
+    String fib="(λrn.if (n<=2) then 1 else ((r(n-1)) + (r(n-2))))";
     return new Application(parse(fix),parse(fib));
   }
 

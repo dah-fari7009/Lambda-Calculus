@@ -23,10 +23,10 @@ public class Tree{
     int a=0;
     System.out.println("Chosen reduction strategy:: "+evaluationStrat.toString()+"\n");
     System.out.println(redex);
-    redex.bond(false);
+    //redex.bond(false);
     while(!redex.isInBnf()){
       redex=evaluationStrat.reduce(redex,list);
-      redex.bond(false);
+      //redex.bond(false);
       System.out.println(redex);
       if(list.size()>=3){
         for(int i=0;i<list.size()-1;i++){
@@ -53,6 +53,7 @@ public class Tree{
 }
   list.add(redex);
 }
+    redex.bond(false);
     if(redex.isAlphaEquivalent(OpAndCons.parse(OpAndCons.tru))) System.out.println("true");
     else if(redex.isAlphaEquivalent(OpAndCons.parse(OpAndCons.fals))) System.out.println("0/false");
     else{
@@ -61,7 +62,7 @@ public class Tree{
         System.out.println(number);
       }
       catch(Exception e){
-
+          e.printStackTrace();
       }
     }
   System.out.println("The expression can not be further reduced");

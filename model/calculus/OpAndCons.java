@@ -2,7 +2,7 @@ package model.calculus;
 
 import java.io.*;
 public interface OpAndCons{
-  final String omega="((λx.(xx))(λx.(xx))";
+  final String omega="((λx.(xx))(λx.(xx)))";
   final String pair="(λfsb.((bf)s))";
   final String fst="(λp.(p(λab.a)))";
   final String snd="(λp.(p(λab.b)))";

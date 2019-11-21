@@ -23,7 +23,7 @@ public class Tree{
     int a=0;
     System.out.println("Chosen reduction strategy:: "+evaluationStrat.toString()+"\n");
     System.out.println(redex);
-    //redex.bond(false);
+   // redex.bond(false);
     while(!redex.isInBnf()){
       redex=evaluationStrat.reduce(redex,list);
       //redex.bond(false);
@@ -62,7 +62,7 @@ public class Tree{
         System.out.println(number);
       }
       catch(Exception e){
-          e.printStackTrace();
+          //e.printStackTrace();
       }
     }
   System.out.println("The expression can not be further reduced");

@@ -191,9 +191,9 @@ public void rename(char t, char a){
   }
 
   public Abstraction substitute(Variable target,LambdaTerm sub){
-      System.out.println("We will substitute : "+this+"   with  "+sub);
+     // System.out.println("We will substitute : "+this+"   with  "+sub);
       if(!this.body.freeocc(target.name)) {
-          System.out.println("Nothing to replace");
+       //   System.out.println("Nothing to replace");
           return this;
      }
     if(sub.freeocc(binding.name())){
@@ -206,7 +206,7 @@ public void rename(char t, char a){
      body.rename(binding.name(),tar);
      binding.name=tar;
     }
-    System.out.println("We might have replaced :: "+this);
+    //System.out.println("We might have replaced :: "+this);
     return new Abstraction(binding,body.substitute(target,sub));
 }
 
